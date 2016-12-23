@@ -5,12 +5,12 @@
   <title><%= htmlWebpackPlugin.options.title %></title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <%= require('html!./fonts.html') %>
+  <%= require('html-loader!./fonts.html') %>
 
 </head>
 <body>
   <h1>Default html template</h1>
   <p>The component of each pages will goes here...!</p>
-  <%= require('html!./partial.html') %>
+  <%= require('html-loader!./partial.html') %>
 </body>
 </html>
