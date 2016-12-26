@@ -16,7 +16,7 @@ module.exports = {
 	module: {
 		loaders: [{
       test: /\.scss$/,
-      loaders: ['style-loader', 'css-loader?sourceMap', 'sass-loader?sourceMap'],
+      loaders: ['style-loader', 'css-loader?sourceMap', 'sass-loader'],
       include: path.resolve(__dirname, "src/styles")
     }, {
       test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
