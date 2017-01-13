@@ -9,9 +9,7 @@ module.exports = {
 	},
 	devServer: {
     devtool: 'cheap-eval-source-map',
-		contentBase: path.join(__dirname, 'dist'),
-		inline: true,
-		stats: 'errors-only'
+		contentBase: path.join(__dirname, 'dist'),		
 	},
 	module: {
 		loaders: [{
