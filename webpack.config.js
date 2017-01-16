@@ -4,18 +4,18 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
 	entry: ['./src/scripts/index.js'],
 	output: {
-		path: path.resolve(__dirname, 'dist'),
+		path: path.resolve(__dirname, 'public'),
 		filename: 'bundle.js',
-		publicPath: "assets/", // string
+		publicPath: "assets/js/",
 	},
 	devServer: {
-    devtool: 'cheap-eval-source-map',
-		contentBase: path.resolve(__dirname, 'dist'),		
+    devtool: 'source-map',
+		contentBase: path.resolve(__dirname, 'public'),
 	},
 	module: {
 		loaders: [{
       test: /\.scss$/,
-      loaders: ['style-loader', 'css-loader?sourceMap', 'sass-loader?sourceMap'],      
+      loaders: ['style-loader', 'css-loader?sourceMap', 'sass-loader?sourceMap'],
     }, {
       test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
       //loader: 'url-loader?limit=10000',
@@ -26,12 +26,12 @@ module.exports = {
       loader: 'file-loader',
     },
     {
-      test: /\.(jpg|png|gif)$/,
-      loader: 'file-loader'
+      test: /\.(png|jpg|gif)$/,
+      loader: 'file-loader?name=[name].[ext]&publicPath=assets/images/&outputPath=app/images/'
     }]
 	},
 	plugins: [
-		new HtmlWebpackPlugin({ 
+		new HtmlWebpackPlugin({
 			title: 'Homepage',
 			filename: 'index.html',
 	      	template: 'src/templates/index.html'
