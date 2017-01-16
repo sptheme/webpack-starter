@@ -1,3 +1,3 @@
-require('./styles/theme.scss');
+require('../styles/theme.scss');
 
 console.log('Getting ready...!');

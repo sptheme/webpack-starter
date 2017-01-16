@@ -2,20 +2,20 @@ var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-	entry: ['./src/index.js'],
+	entry: ['./src/scripts/index.js'],
 	output: {
-		path: path.join(__dirname, 'dist'),
-		filename: 'bundle.js'
+		path: path.resolve(__dirname, 'dist'),
+		filename: 'bundle.js',
+		publicPath: "assets/", // string
 	},
 	devServer: {
     devtool: 'cheap-eval-source-map',
-		contentBase: path.join(__dirname, 'dist'),		
+		contentBase: path.resolve(__dirname, 'dist'),		
 	},
 	module: {
 		loaders: [{
       test: /\.scss$/,
-      loaders: ['style-loader', 'css-loader?sourceMap', 'sass-loader'],
-      include: path.resolve(__dirname, "src/styles")
+      loaders: ['style-loader', 'css-loader?sourceMap', 'sass-loader?sourceMap'],      
     }, {
       test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
       //loader: 'url-loader?limit=10000',
@@ -24,14 +24,17 @@ module.exports = {
     {
       test: /\.(ttf|eot|svg)(\?[\s\S]+)?$/,
       loader: 'file-loader',
+    },
+    {
+      test: /\.(jpg|png|gif)$/,
+      loader: 'file-loader'
     }]
 	},
 	plugins: [
-		new HtmlWebpackPlugin(),
-		new HtmlWebpackPlugin({  // Also generate a about.html
-			title: 'About page',
-			filename: 'about.html',
-	      	template: 'src/partials/default.html'
+		new HtmlWebpackPlugin({ 
+			title: 'Homepage',
+			filename: 'index.html',
+	      	template: 'src/templates/index.html'
 	    })
 	]
 }
